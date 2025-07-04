@@ -60,6 +60,7 @@
   - [x] 認証ガード機能実装（未認証時のリダイレクト処理）
 - [x] ログイン成功時に、アカウントのUIDでmembersのaccountIdを紐づけて取得する
   - [x] UIDでmembersが紐づかなかった場合、membersを新規作成しaccountIdにUIDを保持させる
+  - [x] GetOrCreateMemberUseCaseは戻り値をbooleanにする
 - [x] ログアウトボタンはメニューの最下部に配置する
 - [x] ログインユーザーのニックネームをメニューの上部に表示する
 - [x] ログインユーザーのニックネームが未設定の場合は、kanjiLastName+半角スペース+kanjiFirstNameを表示する

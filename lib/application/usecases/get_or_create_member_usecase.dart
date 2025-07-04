@@ -7,14 +7,14 @@ class GetOrCreateMemberUseCase {
 
   GetOrCreateMemberUseCase(this._memberRepository);
 
-  Future<Member> execute(User user) async {
+  Future<bool> execute(User user) async {
     // 既存のメンバーをaccountIdで検索
     final existingMember = await _memberRepository.getMemberByAccountId(
       user.id,
     );
 
     if (existingMember != null) {
-      return existingMember;
+      return true;
     }
 
     // メンバーが見つからない場合、新規作成
@@ -26,6 +26,6 @@ class GetOrCreateMemberUseCase {
     );
 
     await _memberRepository.saveMember(newMember);
-    return newMember;
+    return true;
   }
 }

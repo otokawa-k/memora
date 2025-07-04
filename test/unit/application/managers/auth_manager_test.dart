@@ -4,7 +4,6 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:memora/domain/entities/auth_state.dart';
 import 'package:memora/domain/entities/user.dart';
-import 'package:memora/domain/entities/member.dart';
 import 'package:memora/domain/services/auth_service.dart';
 import 'package:memora/application/managers/auth_manager.dart';
 import 'package:memora/application/usecases/get_or_create_member_usecase.dart';
@@ -102,14 +101,6 @@ void main() {
           isEmailVerified: true,
         );
 
-        final member = Member(
-          id: 'member-id-1',
-          displayName: '表示名',
-          accountId: 'user123',
-          firstName: 'テストユーザー',
-          email: 'test@example.com',
-        );
-
         // authStateChangesでユーザー状態変更をシミュレート
         final controller = StreamController<User?>();
         when(
@@ -123,7 +114,7 @@ void main() {
 
         when(
           mockGetOrCreateMemberUseCase.execute(user),
-        ).thenAnswer((_) async => member);
+        ).thenAnswer((_) async => true);
 
         // AuthManagerにUseCaseを依存注入
         authManager = AuthManager(
